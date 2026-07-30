@@ -23,6 +23,12 @@ variable "lambda_timeout" {
   description = "Timout of the lambda function"
 }
 
+variable "memory_size" {
+  type        = number
+  description = "Memory (MB) allocated to the Lambda"
+  default     = 128
+}
+
 variable "source_dir" {
   type        = string
   description = "Source code to zip"

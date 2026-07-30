@@ -14,6 +14,7 @@ resource "aws_lambda_function" "windows_device_validation" {
   role             = aws_iam_role.device_validation_role.arn
   handler          = var.handler
   runtime          = var.function_runtime
+  memory_size     = var.memory_size
   timeout          = var.lambda_timeout
   filename         = data.archive_file.lambda_zip.output_path
   source_code_hash = data.archive_file.lambda_zip.output_base64sha256

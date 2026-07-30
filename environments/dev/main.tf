@@ -6,6 +6,7 @@ module "device_validation" {
   handler            = "lambda_function.lambda_handler"
   function_runtime   = "python3.13"
   lambda_timeout     = 120
+  memory_size        = 256
   log_prefix         = "device-validation-logs/"
 
   secrets_path       = aws_secretsmanager_secret.config.arn
