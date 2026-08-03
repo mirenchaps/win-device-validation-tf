@@ -12,11 +12,21 @@ module "device_validation" {
   secrets_path       = aws_secretsmanager_secret.config.arn
   dynamodb_table_arn = data.aws_dynamodb_table.failures.arn
   layer_arns         = [data.aws_lambda_layer_version.common_deps.arn]
+  source_dir         = "${path.module}/../../../device-validation/aws-lambda/windows-log-processor"
 
-
-  bucket_name = aws_s3_bucket.device_logs.bucket
-  bucket_arn  = aws_s3_bucket.device_logs.arn
-
-  source_dir = "${path.module}/../../../device-validation/aws-lambda/windows-log-processor"
+  source_buckets = {
+    dev = {
+      name = aws_s3_bucket.dev_logs.bucket
+      arn  = aws_s3_bucket.dev_logs.arn
+    }
+    stage = {
+      name = aws_s3_bucket.stage_logs.bucket
+      arn  = aws_s3_bucket.stage_logs.arn
+    }
+    prod = {
+      name = aws_s3_bucket.prod_logs.bucket
+      arn  = aws_s3_bucket.prod_logs.arn
+    }
+  }
 }
 

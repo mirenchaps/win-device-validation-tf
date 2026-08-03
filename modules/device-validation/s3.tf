@@ -1,13 +1,17 @@
 resource "aws_lambda_permission" "allow_s3" {
-  statement_id  = "AllowS3Invoke"
+  for_each = var.source_buckets
+
+  statement_id  = "AllowS3Invoke-${each.key}"
   principal     = "s3.amazonaws.com"
   action        = "lambda:InvokeFunction"
-  source_arn    = var.bucket_arn
+  source_arn    = each.value.arn
   function_name = aws_lambda_function.windows_device_validation.function_name
 }
 
 resource "aws_s3_bucket_notification" "windows_device_validation" {
-  bucket = var.bucket_name
+  for_each = var.source_buckets
+
+  bucket = each.value.name
 
   lambda_function {
     lambda_function_arn = aws_lambda_function.windows_device_validation.arn

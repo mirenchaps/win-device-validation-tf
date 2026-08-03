@@ -45,14 +45,12 @@ variable "secrets_path" {
   description = "Path to mystical secrets"
 }
 
-variable "bucket_name" {
-  type        = string
-  description = "Bucket name"
-}
-
-variable "bucket_arn" {
-  type        = string
-  description = "Bucket arn"
+variable "source_buckets" {
+  type = map(object({
+    name = string
+    arn  = string
+  }))
+  description = "Source buckets that trigger the Lambda, keyed by environment"
 }
 
 variable "dynamodb_table_arn" {
