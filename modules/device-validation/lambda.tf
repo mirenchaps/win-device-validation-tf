@@ -24,6 +24,7 @@ resource "aws_lambda_function" "windows_device_validation" {
   environment {
     variables = {
       SECRETS_PATH = var.secrets_path
+      BUCKET_ROOM_MAP = jsonencode({ for env, bucket in var.source_buckets : bucket.name => var.room_ids[env] })
     }
   }
 

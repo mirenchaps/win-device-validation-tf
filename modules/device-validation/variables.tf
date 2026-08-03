@@ -58,6 +58,11 @@ variable "dynamodb_table_arn" {
   description = "ARN of the Dynamo DB Table"
 }
 
+variable "room_ids" {
+  type        = map(string)
+  description = "Webex room id per environment, keyed by env name"
+}
+
 variable "layer_arns" {
   type    = list(string)
   default = []
