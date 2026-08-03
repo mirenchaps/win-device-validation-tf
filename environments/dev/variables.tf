@@ -13,3 +13,8 @@ variable "memory_size" {
   type        = number
   description = "Memory (MB) allocated to Lambda"
 }
+
+variable "room_ids" {
+  type        = map(string)
+  description = "Webex room id per environment, keyed by env name"
+}

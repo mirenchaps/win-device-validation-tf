@@ -14,6 +14,8 @@ module "device_validation" {
   layer_arns         = [data.aws_lambda_layer_version.common_deps.arn]
   source_dir         = "${path.module}/../../../device-validation/aws-lambda/windows-log-processor"
 
+  room_ids = var.room_ids
+
   source_buckets = {
     dev = {
       name = aws_s3_bucket.dev_logs.bucket
