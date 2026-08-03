@@ -2,11 +2,11 @@ module "device_validation" {
   source = "../../modules/device-validation"
 
   function_base_name = "windows_device_validation"
-  environment        = "dev"
+  environment        = var.environment
   handler            = "lambda_function.lambda_handler"
   function_runtime   = "python3.13"
   lambda_timeout     = 120
-  memory_size        = 256
+  memory_size        = var.memory_size
   log_prefix         = "device-validation-logs/"
 
   secrets_path       = aws_secretsmanager_secret.config.arn

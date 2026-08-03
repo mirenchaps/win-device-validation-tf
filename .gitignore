@@ -2,4 +2,9 @@
 *.tfstate.*
 .terraform/
 *.tfvars
+!terraform.tfvars
 dev-secret.json
+.DS_Store
+*.log
+build/
+*.zip
