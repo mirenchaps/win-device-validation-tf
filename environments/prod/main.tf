@@ -18,10 +18,9 @@ module "device_validation" {
   room_ids = var.room_ids
 
   source_buckets = {
-    dev = {
-      name = aws_s3_bucket.dev_logs.bucket
-      arn  = aws_s3_bucket.dev_logs.arn
+    prod = {
+      name = aws_s3_bucket.prod_logs.bucket
+      arn  = aws_s3_bucket.prod_logs.arn
     }
   }
 }
-
