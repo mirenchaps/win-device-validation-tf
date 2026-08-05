@@ -58,6 +58,11 @@ variable "dynamodb_table_arn" {
   description = "ARN of the Dynamo DB Table"
 }
 
+variable "dynamodb_table_name" {
+  type        = string
+  description = "Name of the DynamoDB failure table; passed to the Lambda as FAILURE_TABLE_NAME"
+}
+
 variable "room_ids" {
   type        = map(string)
   description = "Webex room id per environment, keyed by env name"
