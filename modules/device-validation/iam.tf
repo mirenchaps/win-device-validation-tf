@@ -20,7 +20,7 @@ resource "aws_iam_role_policy_attachment" "lambda_logs" {
 }
 
 data "aws_iam_policy_document" "permissions" {
-    statement {
+  statement {
     actions   = ["s3:GetObject", "s3:DeleteObject"]
     resources = [for bucket in var.source_buckets : "${bucket.arn}/${var.log_prefix}*"]
     effect    = "Allow"
